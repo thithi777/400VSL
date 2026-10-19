@@ -1,0 +1,7 @@
+# Gói thêm cho web UI (ngoài môi trường train: torch 2.6.0+cu124, mediapipe 0.10.14, opencv, numpy, pandas, einops)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+sqlalchemy>=2.0       # CSDL tài khoản và tiến độ (mặc định SQLite)
+argon2-cffi>=23.1     # băm mật khẩu
+imageio-ffmpeg>=0.5   # chỉ dùng trong scripts/build_references.py (ffmpeg kèm libx264)

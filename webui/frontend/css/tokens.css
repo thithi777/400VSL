@@ -1,0 +1,60 @@
+/* Bảng màu, font và kích thước dùng chung.
+   Đơn sắc ấm; màu pastel chỉ mang nghĩa: tay phải / tay trái / thân, và trạng thái đạt / gần / chưa. */
+:root {
+  /* Nền và bề mặt */
+  --canvas: #F7F6F3;
+  --surface: #FFFFFF;
+  --surface-muted: #FBFBFA;
+  --surface-sunk: #F1F0EC;
+  --border: #EAEAEA;
+  --border-strong: #DCDBD6;
+
+  /* Chữ */
+  --text: #2F3437;
+  --text-strong: #111111;
+  --muted: #787774;
+  --faint: #A9A8A3;
+
+  /* Nút chính */
+  --ink: #111111;
+  --ink-hover: #333333;
+
+  /* Khung xương: tay phải / tay trái / thân */
+  --right: #1F6C9F;
+  --right-bg: #E1F3FE;
+  --left: #9F2F2D;
+  --left-bg: #FDEBEC;
+  --body: #346538;
+  --body-bg: #EDF3EC;
+
+  /* Trạng thái */
+  --good: #346538;
+  --good-bg: #EDF3EC;
+  --warn: #956400;
+  --warn-bg: #FBF3DB;
+  --bad: #9F2F2D;
+  --bad-bg: #FDEBEC;
+  --rec: #C4302B;
+
+  /* Font: cả ba đều có subset vietnamese trên Google Fonts */
+  --font-sans: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", ui-monospace, monospace;
+
+  /* Hình khối */
+  --radius: 12px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
+  --radius-xs: 4px;
+  --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  /* Chuyển động */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 160ms;
+  --slow: 600ms;
+
+  /* Bố cục */
+  --page-max: 1240px;
+  --gutter: clamp(16px, 3vw, 40px);
+  --header-h: 64px;
+}

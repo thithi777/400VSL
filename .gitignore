@@ -1,0 +1,15 @@
+# Môi trường Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# CSDL tài khoản (mật khẩu đã băm) và tiến độ người học: không bao giờ đưa lên git
+webui/instance/
+
+# Hệ điều hành / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,0 +1,12 @@
+# Gói cần để chạy web (Python 3.11). PyTorch GPU cài riêng TRƯỚC file này:
+#   pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+mediapipe==0.10.14
+opencv-contrib-python==5.0.0.93
+numpy==2.4.6
+pandas==3.0.6
+einops==0.8.2
+fastapi==0.145.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+SQLAlchemy==2.1.5
+argon2-cffi==25.1.0

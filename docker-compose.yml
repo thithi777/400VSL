@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    image: vsl400-web
+    container_name: vsl400-web
+    # Chỉ mở trên máy này; người ngoài vào qua cloudflared (xem README).
+    # Muốn máy khác trong mạng LAN vào thẳng thì đổi thành "8000:8000".
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      VSL_WORKERS: "3"
+      VSL_QUEUE_MAX: "20"
+    volumes:
+      - vsl400-data:/app/webui/instance
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  vsl400-data:

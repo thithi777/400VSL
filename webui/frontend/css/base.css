@@ -1,0 +1,404 @@
+/* Reset, chữ, khung trang. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Một đốm sáng ấm rất nhẹ để nền không phẳng tuyệt đối */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(1200px 600px at 85% -10%, rgba(214, 196, 160, 0.10), transparent 60%);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  color: var(--text-strong);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text-strong);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+::selection {
+  background: var(--right-bg);
+}
+
+.serif {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.noscript {
+  padding: 40px var(--gutter);
+}
+
+/* ------------------------------------------------------------------ */
+/* Thanh trên cùng                                                      */
+/* ------------------------------------------------------------------ */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(247, 246, 243, 0.86);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header__inner {
+  max-width: var(--page-max);
+  height: var(--header-h);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.brand__mark {
+  align-self: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--ink);
+  position: relative;
+}
+
+.brand__mark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  width: 10px;
+  height: 12px;
+  border: 1.8px solid var(--canvas);
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+}
+
+.brand__name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-strong);
+}
+
+.brand__sub {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.app-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.app-nav__link {
+  padding: 6px 12px;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--muted);
+  transition: color var(--fast), background-color var(--fast);
+}
+
+.app-nav__link:hover {
+  color: var(--text-strong);
+  background: var(--surface-sunk);
+}
+
+.app-nav__link.is-active {
+  color: var(--text-strong);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.app-nav[hidden],
+.user[hidden] {
+  display: none;
+}
+
+.app-header__end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Chỉ hiện khi đã đăng nhập */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user__name {
+  max-width: 16ch;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-strong);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Chỉ hiện khi máy chủ lỗi hoặc mất kết nối */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--bad);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.status[hidden] {
+  display: none;
+}
+
+.status__dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bad);
+}
+
+.status__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------------------------ */
+/* Khung nội dung                                                       */
+/* ------------------------------------------------------------------ */
+.app-main {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 40px var(--gutter) 96px;
+  outline: none;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page-head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.page-lead {
+  max-width: 62ch;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.section-title .count {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--faint);
+}
+
+/* ------------------------------------------------------------------ */
+/* Chuyển động: chỉ transform/opacity, tắt khi người dùng giảm chuyển động */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: reveal var(--slow) var(--ease) both;
+    animation-delay: calc(var(--i, 0) * 50ms);
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+
+  .app-header__inner {
+    gap: 16px;
+  }
+
+  .brand__sub,
+  .status__text,
+  .user__name {
+    display: none;
+  }
+
+  .app-main {
+    padding-top: 28px;
+  }
+}
+
+/* Điện thoại: thu gọn header để 3 mục menu và nút đăng xuất nằm vừa một dòng */
+@media (max-width: 600px) {
+  .app-header__inner {
+    gap: 12px;
+  }
+
+  /* Chỉ ẩn tên khi menu hiện (đã đăng nhập) */
+  .app-header__inner:has(.app-nav:not([hidden])) .brand__name {
+    display: none;
+  }
+
+  .app-nav {
+    gap: 2px;
+  }
+
+  .app-nav__link {
+    padding: 6px 7px;
+    font-size: 14px;
+  }
+
+  /* "Nhận diện tự do" -> "Nhận diện" để 3 mục menu vừa màn hình điện thoại */
+  .app-nav__extra {
+    display: none;
+  }
+
+  .user .btn {
+    padding: 0 8px;
+  }
+
+  .user__logout-text {
+    display: none;
+  }
+}
+
+@media (max-width: 359px) {
+  .app-header__inner {
+    gap: 8px;
+  }
+
+  .app-nav__link {
+    padding: 6px 5px;
+    font-size: 13px;
+  }
+}
